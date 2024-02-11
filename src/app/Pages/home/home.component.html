@@ -1,0 +1,30 @@
+<button class="btn btn-primary" [routerLink]="['/add']" >Add</button>
+<div class="container-fluid" style="width: 80%;">
+    <table class="table ">
+    <thead>
+      <tr >
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Department</th>
+        <th scope="col">Designation</th>
+        <th scope="col">Phone Number</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of Employees">
+        <th scope="row">{{ employee.id }}</th>
+        <td>{{ employee.empName }}</td>
+        <td>{{ employee.empMail }}</td>
+        <td>{{ employee.empDepartment }}</td>
+        <td>{{ employee.empDesignation }}</td>
+        <td>{{ employee.empPhoneNumber }}</td>
+        <td>
+            <button class="btn btn-dark" [routerLink]="['/edit', employee.id]">Edit</button>
+            <button class="btn btn-danger" (click)="onDelete(employee.id)">Delete</button>        
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

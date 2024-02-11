@@ -1,0 +1,29 @@
+.registerform{
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    /* background-image: url('https://images.unsplash.com/photo-1457296898342-cdd24585d095?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80');
+    background-size: cover; */
+    background-color:grey;
+  }
+  .forms{
+    width: 415px;
+    
+    border-radius: 5px;
+    backdrop-filter: blur(5px) saturate(133%);
+      -webkit-backdrop-filter: blur(1px) saturate(133%);
+      background-color: rgba(255, 255, 255, 0.36);
+      border-radius: 12px;
+      border: 1px solid rgba(209, 213, 219, 0.3);
+    padding: 0px 40px;
+  }
+  
+  label{
+  
+    font-size:20px ;
+    font-weight: 500;
+    color:black;
+    margin-bottom: -1px;
+  }
+  

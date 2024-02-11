@@ -1,0 +1,75 @@
+<div class="card">
+    <div class="card-body">
+      <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+        <div class="formGroup">
+          <label>Employee Name</label>
+          <input class="form-control" type="text" formControlName="empName" [ngClass]="{
+                'is-valid': f['empName'].valid,
+                'is-invalid': f['empName'].invalid && (f['empName'].dirty || f['empName'].touched)
+              }">
+          <div *ngIf="f['empName'].touched && f['empName'].hasError('required')" class="text-danger">
+            Employee Name is Required
+          </div>
+        </div>
+  
+        <div class="formGroup">
+          <label>Email</label>
+          <input class="form-control" type="email" formControlName="empMail" [ngClass]="{
+                'is-valid': f['empMail'].valid,
+                'is-invalid': f['empMail'].invalid && (f['empMail'].dirty || f['empMail'].touched)
+              }">
+          <div *ngIf="f['empMail'].touched && f['empMail'].hasError('required')" class="text-danger">
+            Email is Required
+          </div>
+          <div *ngIf="f['empMail'].dirty && f['empMail'].hasError('email')" class="text-danger">
+            Email is in the wrong format
+          </div>
+        </div>
+  
+        <div class="formGroup">
+          <label>Department</label>
+          <select class="form-control" formControlName="empDepartment" [ngClass]="{
+                'is-valid': f['empDepartment'].valid,
+                'is-invalid': f['empDepartment'].invalid && (f['empDepartment'].dirty || f['empDepartment'].touched)
+              }">
+            <option value="">Select Department</option>
+            <option value="IT">IT</option>
+            <option value="HR">HR</option>
+            <option value="Finance">Finance</option>
+           
+          </select>
+          <div *ngIf="f['empDepartment'].touched && f['empDepartment'].hasError('required')" class="text-danger">
+            Department is Required
+          </div>
+        </div>
+  
+        <div class="formGroup">
+          <label>Designation</label>
+          <input class="form-control" type="text" formControlName="empDesignation" [ngClass]="{
+                'is-valid': f['empDesignation'].valid,
+                'is-invalid': f['empDesignation'].invalid && (f['empDesignation'].dirty || f['empDesignation'].touched)
+              }">
+          <div *ngIf="f['empDesignation'].touched && f['empDesignation'].hasError('required')" class="text-danger">
+            Designation is Required
+          </div>
+        </div>
+  
+        <div class="formGroup">
+          <label>Phone Number</label>
+          <input class="form-control" type="number" formControlName="empPhoneNumber" [ngClass]="{
+                'is-valid': f['empPhoneNumber'].valid,
+                'is-invalid': f['empPhoneNumber'].invalid && (f['empPhoneNumber'].dirty || f['empPhoneNumber'].touched)
+              }">
+          <div *ngIf="f['empPhoneNumber'].touched && f['empPhoneNumber'].hasError('required')" class="text-danger">
+            Phone Number is Required
+          </div>
+          <div *ngIf="f['empPhoneNumber'].touched && f['empPhoneNumber'].hasError('pattern')" class="text-danger">
+            Mobile Number must be not more than or less than 10-Digits.
+          </div>
+        </div>
+  
+        <button class="btn btn-primary" [disabled]="addForm.invalid" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  

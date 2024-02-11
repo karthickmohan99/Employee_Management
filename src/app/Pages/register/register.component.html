@@ -1,0 +1,122 @@
+
+
+<div class="container-fluid registerform">
+
+    <form class="forms" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <h1 class="text-center text-uppercase mb-0" >Register</h1>
+      <div class="form-group my-3 ">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          formControlName="firstName"
+          class="form-control"
+          [ngClass]="{'is-valid': f['firstName'].valid && f['firstName'].touched, 'is-invalid': f['firstName'].invalid && f['firstName'].touched}"
+        />
+        <div *ngIf="(f['firstName'].dirty || f['firstName'].touched)&& f['firstName'].errors?.['required']" class="text-danger">
+          
+            First Name is required
+          
+        </div>
+       
+      </div>
+      
+      <div class="form-group my-3">
+        <label for="username">Email</label>
+        <input
+          type="email"
+          formControlName="mail"
+          class="form-control"[ngClass]="{'is-valid': f['mail'].valid && f['mail'].touched, 'is-invalid': f['mail'].invalid && f['mail'].touched}" 
+        />
+        <div *ngIf="f['mail'].dirty && f['mail'].errors?.['required']" class="invalid-feedback">
+          E-mail is required
+          
+        </div>
+        <div  class=" text-danger mt-2" *ngIf="f['mail'].dirty && f['mail'].errors?.['email']"  >invalid Email</div>
+      </div>
+
+      <div class="form-group my-3">
+        <label >Phone Number </label>
+        <input
+          type="number"
+          formControlName="phoneNumber"
+          class="form-control"
+          [ngClass]="{'is-valid': f['phoneNumber'].valid && f['phoneNumber'].touched, 'is-invalid': f['phoneNumber'].invalid && f['phoneNumber'].touched}"
+        />
+        <div *ngIf="f['phoneNumber'].dirty && f['phoneNumber'].errors?.['required']" class="invalid-feedback">
+          
+            Phone Number is required
+          
+        </div>
+        <div class=" text-danger mt-2" *ngIf="f['phoneNumber'].dirty && f['phoneNumber'].errors?.['pattern']">
+          Mobile Number must be not more than or less than 10-Digits.
+         </div>
+      </div>
+      <div class="form-group my-3">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          formControlName="password"
+          class="form-control"
+          [ngClass]="{'is-valid': f['password'].valid && f['password'].touched, 'is-invalid': f['password'].invalid && f['password'].touched}"        />
+        <div *ngIf="f['password'].dirty && f['password'].errors?.['required']" class="text-danger">
+             Password is required
+          
+        </div>
+        <div class="text-danger text-sm" *ngIf="f['password']?.dirty && f['password'].errors?.['pattern']">
+
+          <span class="block " [ngClass]="{'text-primary': f['password']?.value?.match('^(?=.*[A-Z])')}">At least uppercase letter.</span>
+       
+          <span class="block" [ngClass]="{'text-primary': f['password']?.value?.match('(?=.*[a-z])')}">At least one lowercase letter.</span>
+       
+          <span class="block" [ngClass]="{'text-primary': f['password']?.value?.match('(.*[0-9].*)')}">At least one digit.</span>
+       
+          <span class="block" [ngClass]="{'text-primary': f['password']?.value?.match('(?=.*[!@#$%^&*])')}">At least one special character.</span>
+       
+          <span class="block" [ngClass]="{'text-primary': f['password']?.value?.match('.{8,}')}">At least 8 characters long.</span>
+       
+       </div>
+      </div>
+      <div class="form-group my-3">
+        <label for="cmpassword">Confirm Password</label>
+        <input
+          type="password"
+          formControlName="cmPassword"
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && f['cmPassword'].errors }"
+        />
+        <div *ngIf="f['cmPassword'].dirty && f['cmPassword'].errors?.['required']" class="text-danger">
+          Password is required
+       
+     </div>
+          <div class=" text-danger mt-2" *ngIf="f['cmPassword'].dirty && f['cmPassword'].errors?.['matching']">
+            Confirm Password does not match with Password
+           </div>
+  
+       
+      </div>
+      <div class="form-group my-3 d-flex justify-content-between ">
+
+        <button [disabled]="registerForm.invalid" class="btn btn-dark  "
+                                        type="submit">Sign up</button>
+        
+        <button (click)="resetForm()" class="btn btn-light  "
+                                        type="button">Reset</button>
+        <!-- <app-submit-button
+        [type]="'button'"
+        [label]="'Reset'"
+        (onClick)="resetCall($event)"
+        [className]="'btn btn-light'"
+      >
+      </app-submit-button>
+        <app-submit-button
+          [type]="'submit'"ms-end
+          [label]="'Register'"
+          [className]="'btn btn-dark '"
+        >
+        </app-submit-button> -->
+  
+  
+      </div>
+    </form>
+  </div>
+  
